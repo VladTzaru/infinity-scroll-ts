@@ -64,8 +64,7 @@ const getQuote = async (): Promise<void> => {
     completeLoading();
   } catch (error) {
     completeLoading();
-    getQuote();
-    console.log(error);
+    alert('Something went wrong, try again.');
   }
 };
 

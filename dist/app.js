@@ -58,8 +58,7 @@ const getQuote = () => __awaiter(void 0, void 0, void 0, function* () {
     }
     catch (error) {
         completeLoading();
-        getQuote();
-        console.log(error);
+        alert('Something went wrong, try again.');
     }
 });
 twitterBtnEl.addEventListener('click', () => tweetQuote(twitterQuote, twitterQuoteAuthor));
