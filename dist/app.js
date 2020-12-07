@@ -13,13 +13,23 @@ const quoteEl = document.getElementById('quote');
 const authorEl = document.getElementById('author');
 const twitterBtnEl = document.getElementById('twitter');
 const newQuoteBtnEl = document.getElementById('new-quote');
+const loader = document.getElementById('loader');
 var FontSize;
 (function (FontSize) {
     FontSize["Long"] = "long-quote";
 })(FontSize || (FontSize = {}));
-let loading = false;
 let twitterQuote = '';
 let twitterQuoteAuthor = '';
+const loading = () => {
+    loader.hidden = false;
+    quoteContainerEl.hidden = true;
+};
+const completeLoading = () => {
+    if (!loader.hidden) {
+        quoteContainerEl.hidden = false;
+        loader.hidden = true;
+    }
+};
 const setTweetQuote = (quote, author) => {
     twitterQuote = quote;
     twitterQuoteAuthor = author;
@@ -35,6 +45,7 @@ const renderText = (text = 'Unknown', el) => {
     el.textContent = text;
 };
 const getQuote = () => __awaiter(void 0, void 0, void 0, function* () {
+    loading();
     const proxyURL = 'https://cors-anywhere.herokuapp.com/';
     const apiURL = 'http://api.forismatic.com/api/1.0/?method=getQuote&lang=en&format=json';
     try {
@@ -43,8 +54,10 @@ const getQuote = () => __awaiter(void 0, void 0, void 0, function* () {
         setTweetQuote(quoteText, quoteAuthor);
         renderText(quoteText, quoteEl);
         renderText(quoteAuthor, authorEl);
+        completeLoading();
     }
     catch (error) {
+        completeLoading();
         getQuote();
         console.log(error);
     }

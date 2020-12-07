@@ -6,6 +6,7 @@ const quoteEl = document.getElementById('quote') as HTMLElement;
 const authorEl = document.getElementById('author') as HTMLElement;
 const twitterBtnEl = document.getElementById('twitter') as HTMLElement;
 const newQuoteBtnEl = document.getElementById('new-quote') as HTMLElement;
+const loader = document.getElementById('loader') as HTMLElement;
 
 // Style config
 enum FontSize {
@@ -13,9 +14,20 @@ enum FontSize {
 }
 
 // State
-let loading = false;
 let twitterQuote = '';
 let twitterQuoteAuthor = '';
+
+const loading = (): void => {
+  loader.hidden = false;
+  quoteContainerEl.hidden = true;
+};
+
+const completeLoading = (): void => {
+  if (!loader.hidden) {
+    quoteContainerEl.hidden = false;
+    loader.hidden = true;
+  }
+};
 
 const setTweetQuote = (quote: string, author: string): void => {
   twitterQuote = quote;
@@ -39,6 +51,7 @@ const renderText = (text: string = 'Unknown', el: HTMLElement): void => {
 
 // Get quote form API
 const getQuote = async (): Promise<void> => {
+  loading();
   const proxyURL = 'https://cors-anywhere.herokuapp.com/';
   const apiURL =
     'http://api.forismatic.com/api/1.0/?method=getQuote&lang=en&format=json';
@@ -48,7 +61,9 @@ const getQuote = async (): Promise<void> => {
     setTweetQuote(quoteText, quoteAuthor);
     renderText(quoteText, quoteEl);
     renderText(quoteAuthor, authorEl);
+    completeLoading();
   } catch (error) {
+    completeLoading();
     getQuote();
     console.log(error);
   }
