@@ -1,4 +1,4 @@
-// Elem refs
+// Elements
 const quoteContainerEl = document.getElementById(
   'quote-container'
 ) as HTMLElement;
@@ -8,7 +8,7 @@ const twitterBtnEl = document.getElementById('twitter') as HTMLElement;
 const newQuoteBtnEl = document.getElementById('new-quote') as HTMLElement;
 const loader = document.getElementById('loader') as HTMLElement;
 
-// Style config
+// Style configuration
 enum FontSize {
   Long = 'long-quote',
 }
@@ -29,18 +29,17 @@ const completeLoading = (): void => {
   }
 };
 
+// Update global variables so tweetQuote method can accept required arguments
 const setTweetQuote = (quote: string, author: string): void => {
   twitterQuote = quote;
   twitterQuoteAuthor = author;
 };
 
-// Tweet quote
 const tweetQuote = (quote: string, author: string): void => {
   const URL = `https://twitter.com/intent/tweet?text=${quote} - ${author}`;
   window.open(URL, '_blank');
 };
 
-// Render text in HTML elem
 const renderText = (text: string = 'Unknown', el: HTMLElement): void => {
   text.length > 100
     ? el.classList.add(`${FontSize.Long}`)
@@ -52,7 +51,7 @@ const renderText = (text: string = 'Unknown', el: HTMLElement): void => {
 // Get quote form API
 const getQuote = async (): Promise<void> => {
   loading();
-  const proxyURL = 'https://cors-anywhere.herokuapp.com/';
+  const proxyURL = 'https://cors-anywhere.herokuapp.com/'; // Bypass cors issues
   const apiURL =
     'http://api.forismatic.com/api/1.0/?method=getQuote&lang=en&format=json';
   try {
@@ -74,5 +73,5 @@ twitterBtnEl.addEventListener('click', () =>
 );
 newQuoteBtnEl.addEventListener('click', getQuote);
 
-// Invoke
+// Invocations
 getQuote();
