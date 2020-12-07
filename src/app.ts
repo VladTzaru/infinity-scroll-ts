@@ -30,7 +30,7 @@ const tweetQuote = (quote: string, author: string): void => {
 
 // Render text in HTML elem
 const renderText = (text: string = 'Unknown', el: HTMLElement): void => {
-  text.length > 150
+  text.length > 100
     ? el.classList.add(`${FontSize.Long}`)
     : el.classList.remove(`${FontSize.Long}`);
 
@@ -49,6 +49,7 @@ const getQuote = async (): Promise<void> => {
     renderText(quoteText, quoteEl);
     renderText(quoteAuthor, authorEl);
   } catch (error) {
+    getQuote();
     console.log(error);
   }
 };

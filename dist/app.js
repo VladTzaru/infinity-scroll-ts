@@ -29,7 +29,7 @@ const tweetQuote = (quote, author) => {
     window.open(URL, '_blank');
 };
 const renderText = (text = 'Unknown', el) => {
-    text.length > 150
+    text.length > 100
         ? el.classList.add(`${FontSize.Long}`)
         : el.classList.remove(`${FontSize.Long}`);
     el.textContent = text;
@@ -45,6 +45,7 @@ const getQuote = () => __awaiter(void 0, void 0, void 0, function* () {
         renderText(quoteAuthor, authorEl);
     }
     catch (error) {
+        getQuote();
         console.log(error);
     }
 });
