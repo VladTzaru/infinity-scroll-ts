@@ -25,18 +25,18 @@ const imageLoaded = () => {
         imagesLoaded = 0;
     }
 };
-const createLinkEl = (src) => {
+const createLinkEl = (src, target = '_blank') => {
     const linkEl = document.createElement('a');
     linkEl.setAttribute('href', src);
-    linkEl.setAttribute('target', '_blank');
+    linkEl.setAttribute('target', target);
     return linkEl;
 };
-const createImgEl = (src, alt, title, eventListner) => {
+const createImgEl = (src, alt, title, eListener) => {
     const imgEl = document.createElement('img');
     imgEl.setAttribute('src', src);
     imgEl.setAttribute('alt', alt);
     imgEl.setAttribute('title', title);
-    imgEl.addEventListener('load', imageLoaded);
+    imgEl.addEventListener('load', eListener);
     return imgEl;
 };
 const displayPhotos = (photos) => {

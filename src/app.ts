@@ -23,10 +23,10 @@ const imageLoaded = (): void => {
 };
 
 // Create <a> and set attributes
-const createLinkEl = (src: string): HTMLElement => {
+const createLinkEl = (src: string, target = '_blank'): HTMLElement => {
   const linkEl = document.createElement('a');
   linkEl.setAttribute('href', src);
-  linkEl.setAttribute('target', '_blank');
+  linkEl.setAttribute('target', target);
   return linkEl;
 };
 
@@ -35,14 +35,13 @@ const createImgEl = (
   src: string,
   alt: string,
   title: string,
-  eventListner: () => void
+  eListener: () => void
 ): HTMLElement => {
   const imgEl = document.createElement('img');
   imgEl.setAttribute('src', src);
   imgEl.setAttribute('alt', alt);
   imgEl.setAttribute('title', title);
-
-  imgEl.addEventListener('load', imageLoaded);
+  imgEl.addEventListener('load', eListener);
   return imgEl;
 };
 
