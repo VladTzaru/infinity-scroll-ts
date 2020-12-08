@@ -39,17 +39,15 @@ h1 {
   margin: 10px 30%;
 }
 
-.image {
+img {
+  width: 100%;
   background: #fff;
-  padding: 6px;
   border-radius: 4px;
   margin-bottom: 30px;
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
 }
 
-.img-responsive {
-  width: 100%;
-}
+
 
 @media screen and (max-width: 600px) {
   h1 {

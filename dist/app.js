@@ -20,11 +20,11 @@ const displayPhotos = (photos) => {
         linkEl.setAttribute('href', photo.links.html);
         linkEl.setAttribute('target', '_blank');
         const imgEl = document.createElement('img');
-        imgEl.setAttribute('href', photo.urls.regular);
+        imgEl.setAttribute('src', photo.urls.regular);
         imgEl.setAttribute('alt', photo.alt_description);
         imgEl.setAttribute('title', photo.alt_description);
         linkEl.appendChild(imgEl);
-        imgContainer === null || imgContainer === void 0 ? void 0 : imgContainer.appendChild(linkEl);
+        imgContainer.appendChild(linkEl);
     });
 };
 const getPhotos = () => __awaiter(void 0, void 0, void 0, function* () {

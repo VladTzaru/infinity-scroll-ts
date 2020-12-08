@@ -16,13 +16,13 @@ const displayPhotos = (photos: object[]): void => {
 
     // Create <img>
     const imgEl = document.createElement('img');
-    imgEl.setAttribute('href', photo.urls.regular);
+    imgEl.setAttribute('src', photo.urls.regular);
     imgEl.setAttribute('alt', photo.alt_description);
     imgEl.setAttribute('title', photo.alt_description);
 
     // Put <img> inside <a>, then put both inside imgContainer element
     linkEl.appendChild(imgEl);
-    imgContainer?.appendChild(linkEl);
+    imgContainer.appendChild(linkEl);
   });
 };
 
