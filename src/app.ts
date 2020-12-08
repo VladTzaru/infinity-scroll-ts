@@ -2,16 +2,16 @@
 const imgContainer = document.getElementById('image-container') as HTMLElement;
 const loader = document.getElementById('loader') as HTMLElement;
 
-// Configuration
-const apiKEY = 'N5_jPo_uNENR8TlxL19JonhCjKtfShdhCImjabmAp2s';
-const apiURL = `https://api.unsplash.com/photos/random/?client_id=${apiKEY}&count=${count}`;
-
 // State
 const count = 30;
 let imgArray: object[] = [];
 let ready = false;
 let imagesLoaded = 0;
 let totalImages = 0;
+
+// Configuration
+const apiKEY = 'N5_jPo_uNENR8TlxL19JonhCjKtfShdhCImjabmAp2s';
+const apiURL = `https://api.unsplash.com/photos/random/?client_id=${apiKEY}&count=${count}`;
 
 const imageLoaded = (): void => {
   imagesLoaded++;

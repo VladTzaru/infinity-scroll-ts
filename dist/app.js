@@ -10,11 +10,11 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 };
 const imgContainer = document.getElementById('image-container');
 const loader = document.getElementById('loader');
+const count = 30;
 let imgArray = [];
 let ready = false;
 let imagesLoaded = 0;
 let totalImages = 0;
-const count = 30;
 const apiKEY = 'N5_jPo_uNENR8TlxL19JonhCjKtfShdhCImjabmAp2s';
 const apiURL = `https://api.unsplash.com/photos/random/?client_id=${apiKEY}&count=${count}`;
 const imageLoaded = () => {
@@ -25,19 +25,27 @@ const imageLoaded = () => {
         imagesLoaded = 0;
     }
 };
+const createLinkEl = (src) => {
+    const linkEl = document.createElement('a');
+    linkEl.setAttribute('href', src);
+    linkEl.setAttribute('target', '_blank');
+    return linkEl;
+};
+const createImgEl = (src, alt, title, eventListner) => {
+    const imgEl = document.createElement('img');
+    imgEl.setAttribute('src', src);
+    imgEl.setAttribute('alt', alt);
+    imgEl.setAttribute('title', title);
+    imgEl.addEventListener('load', imageLoaded);
+    return imgEl;
+};
 const displayPhotos = (photos) => {
     totalImages = photos.length;
     photos.forEach((photo) => {
-        const linkEl = document.createElement('a');
-        linkEl.setAttribute('href', photo.links.html);
-        linkEl.setAttribute('target', '_blank');
-        const imgEl = document.createElement('img');
-        imgEl.setAttribute('src', photo.urls.regular);
-        imgEl.setAttribute('alt', photo.alt_description);
-        imgEl.setAttribute('title', photo.alt_description);
-        imgEl.addEventListener('load', imageLoaded);
-        linkEl.appendChild(imgEl);
-        imgContainer.appendChild(linkEl);
+        const aEl = createLinkEl(photo.links.html);
+        const imgEl = createImgEl(photo.urls.regular, photo.alt_description, photo.alt_description, imageLoaded);
+        aEl.appendChild(imgEl);
+        imgContainer.appendChild(aEl);
     });
 };
 const getPhotos = () => __awaiter(void 0, void 0, void 0, function* () {
