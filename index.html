@@ -3,12 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Quote Generator</title>
-    <link
-      rel="icon"
-      type="image/png"
-      href="https://www.google.com/s2/favicons?domain=google.com"
-    />
+    <title>Infinite Scroll</title>
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css"
@@ -23,27 +18,11 @@
     <link rel="stylesheet" href="./styles.css" />
   </head>
   <body>
-    <!-- LOADER -->
-    <div id="loader" class="loader"></div>
-    <div class="quote-container" id="quote-container">
-      <!-- QUOTE -->
-      <div class="quote-text">
-        <i class="fas fa-quote-left"></i>
-        <span id="quote"></span>
-      </div>
-      <!-- AUTHOR -->
-      <div class="quote-author">
-        <span id="author"></span>
-      </div>
-      <!-- CONTROL BUTTONS -->
-      <div class="button-container">
-        <button class="twitter-button" id="twitter" title="Tweet Quote!">
-          <i class="fab fa-twitter"></i>
-        </button>
-        <button id="new-quote">New Quote</button>
-      </div>
+    <h1>Unsplash Infinite Scroll</h1>
+    <!-- Loader -->
+    <div class="loader" hidden>
+      <img src="./loader.svg" alt="Loader" />
     </div>
-    <!-- SCRIPT -->
     <script defer src="./dist/app.js"></script>
   </body>
 </html>

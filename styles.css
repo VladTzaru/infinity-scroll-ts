@@ -9,113 +9,29 @@ body {
   min-height: 100vh;
   background-color: #742edd;
   display: flex;
-  align-items: center;
   justify-content: center;
 }
 
-.quote-container {
-  text-align: center;
-  width: auto;
-  max-width: 900px;
-  padding: 40px 30px;
-  border-radius: 4px;
-  background-color: #fff;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
-  transition: all 0.3s cubic-bezier(.25, .8, .25, 1);
-}
-
-.quote-container:hover {
-  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
-}
-
-.quote-text {
-  font-size: 2.75rem;
-  font-weight: 400;
-}
-
-.long-quote {
-  font-size: 2rem;
-}
-
-.fa-quote-left {
+h1 {
   font-size: 4rem;
-  color: #742edd;
-}
-
-.quote-author {
-  margin-top: 15px;
-  font-size: 2rem;
-  font-weight: 300;
-  font-style: italic;
-}
-
-.button-container {
-  margin-top: 20px;
-  display: flex;
-  justify-content: space-between;
-}
-
-button {
-  cursor: pointer;
-  text-transform: uppercase;
-  font-size: 1rem;
-  font-weight: bold;
-  padding: 1.2rem 1.8rem;
-  border: none;
-  border-radius: 4px;
-  color: #fff;
-  background-color: #742edd;
-  outline: none;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
-  transition: all 0.3s cubic-bezier(.25, .8, .25, 1);
-}
-
-button:hover {
-  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
-}
-
-.fa-twitter {
-  font-size: 2rem;
-}
-
-.hide {
-  display: none;
-}
-
-.unHide {
-  display: block;
+  color: white;
+  font-weight: 100;
+  letter-spacing: 4px;
 }
 
 .loader {
-  border: 16px solid #f3f3f3;
-  border-top: 16px solid #742edd;
-  border-radius: 50%;
-  width: 120px;
-  height: 120px;
-  animation: spin 1s linear infinite;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(255, 255, 255, 0.8)
 }
 
-@keyframes spin {
-  0% {
-    transform: rotate(0deg);
-  }
-
-  100% {
-    transform: rotate(360deg);
-  }
+.loader img {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 
-/* MQ: Tablet or Smaller */
-@media screen and (max-width: 1000px) {
-  .quote-container {
-    margin: auto 10px;
-  }
-
-  .quote-text {
-    font-size: 2.3rem;
-  }
-
-  .fa-quote-left {
-    font-size: 3rem;
-  }
-}
