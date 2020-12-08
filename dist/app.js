@@ -21,6 +21,7 @@ const imageLoaded = () => {
     imagesLoaded++;
     if (imagesLoaded === totalImages) {
         ready = true;
+        loader.hidden = true;
         imagesLoaded = 0;
     }
 };
