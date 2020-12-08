@@ -20,8 +20,23 @@
   <body>
     <h1>Unsplash Infinite Scroll</h1>
     <!-- Loader -->
-    <div class="loader" hidden>
+    <div class="loader" id="loader" hidden>
       <img src="./loader.svg" alt="Loader" />
+    </div>
+    <!-- Image Container -->
+    <div class="image-container" id="imagine-container">
+      <div class="image">
+        <img
+          class="img-responsive"
+          src="https://images.unsplash.com/photo-1607321776529-0ae62d65864a?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=675&q=80"
+        />
+      </div>
+      <div class="image">
+        <img
+          class="img-responsive"
+          src="https://images.unsplash.com/photo-1607321776529-0ae62d65864a?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=675&q=80"
+        />
+      </div>
     </div>
     <script defer src="./dist/app.js"></script>
   </body>
