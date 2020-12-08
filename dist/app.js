@@ -10,19 +10,29 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 };
 const imgContainer = document.getElementById('image-container');
 const loader = document.getElementById('loader');
-const count = 30;
+let isInitialLoad = true;
+let initialCount = 5;
 let imgArray = [];
 let ready = false;
 let imagesLoaded = 0;
 let totalImages = 0;
 const apiKEY = 'N5_jPo_uNENR8TlxL19JonhCjKtfShdhCImjabmAp2s';
-const apiURL = `https://api.unsplash.com/photos/random/?client_id=${apiKEY}&count=${count}`;
+let apiURL = `https://api.unsplash.com/photos/random/?client_id=${apiKEY}&count=${initialCount}`;
 const imageLoaded = () => {
     imagesLoaded++;
     if (imagesLoaded === totalImages) {
         ready = true;
         loader.hidden = true;
         imagesLoaded = 0;
+    }
+};
+const updateAPIURLWithNewCount = (picCount) => {
+    apiURL = `https://api.unsplash.com/photos/random?client_id=${apiKEY}&count=${picCount}`;
+};
+const shouldUpdateAPIURLWithNewCount = () => {
+    if (isInitialLoad) {
+        updateAPIURLWithNewCount(30);
+        isInitialLoad = false;
     }
 };
 const createLinkEl = (src, target = '_blank') => {
@@ -54,6 +64,7 @@ const getPhotos = () => __awaiter(void 0, void 0, void 0, function* () {
         const data = yield response.json();
         imgArray = [...data];
         displayPhotos(imgArray);
+        shouldUpdateAPIURLWithNewCount();
     }
     catch (error) {
         alert(`Something went wrong. Error: ${error}`);

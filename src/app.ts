@@ -2,8 +2,9 @@
 const imgContainer = document.getElementById('image-container') as HTMLElement;
 const loader = document.getElementById('loader') as HTMLElement;
 
-// State
-const count = 30;
+// Global State
+let isInitialLoad = true;
+let initialCount = 5;
 let imgArray: object[] = [];
 let ready = false;
 let imagesLoaded = 0;
@@ -11,7 +12,7 @@ let totalImages = 0;
 
 // Configuration
 const apiKEY = 'N5_jPo_uNENR8TlxL19JonhCjKtfShdhCImjabmAp2s';
-const apiURL = `https://api.unsplash.com/photos/random/?client_id=${apiKEY}&count=${count}`;
+let apiURL = `https://api.unsplash.com/photos/random/?client_id=${apiKEY}&count=${initialCount}`;
 
 const imageLoaded = (): void => {
   imagesLoaded++;
@@ -19,6 +20,17 @@ const imageLoaded = (): void => {
     ready = true;
     loader.hidden = true;
     imagesLoaded = 0;
+  }
+};
+
+const updateAPIURLWithNewCount = (picCount: number): void => {
+  apiURL = `https://api.unsplash.com/photos/random?client_id=${apiKEY}&count=${picCount}`;
+};
+
+const shouldUpdateAPIURLWithNewCount = (): void => {
+  if (isInitialLoad) {
+    updateAPIURLWithNewCount(30);
+    isInitialLoad = false;
   }
 };
 
@@ -69,6 +81,7 @@ const getPhotos = async (): Promise<void | string[]> => {
     const data: object[] = await response.json();
     imgArray = [...data];
     displayPhotos(imgArray);
+    shouldUpdateAPIURLWithNewCount();
   } catch (error) {
     alert(`Something went wrong. Error: ${error}`);
   }
